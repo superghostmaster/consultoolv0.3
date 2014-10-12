@@ -1,0 +1,85 @@
+
+
+<div class="jumbotron text-center jumboform">
+  <h3>Consultool v.0.25</h3>
+
+  
+
+  <form ng-submit="addPost()" id="subform">
+  <div>
+    <h3>Add a new Consulting Question</h3>
+    <input cols="42" class="form-control" type="text" placeholder="Title" ng-model="title" id="titleField"/>
+    <span data-alertid="example"></span>
+    <br>
+    <input cols="42" class="form-control" type="text" ng-model="question" placeholder="Consulting Question" />
+    <br>
+    <textarea class="form-control" rows="5" ng-model="description" placeholder="Describe your consulting question in detail here."></textarea>
+    <br>
+    
+    <button class="btn btn-md btn-success" type="submit" id="postconfirm">Post</button>
+    
+  </div>
+</form>  
+
+
+</div>
+
+<div class="jumbotron" id="submissionForm" ng-repeat="post in posts | orderBy: '-votes'">
+        
+            <button class="btn btn-sm btn-primary glyphicon glyphicon-thumbs-up"
+                    ng-click="incrementUpvotes(post)"></button>
+            <button class="btn btn-sm btn-warning glyphicon glyphicon-thumbs-down"
+                    ng-click="incrementDownvotes(post)"></button>
+            
+        <div>
+          <h4>Votes: {{post.votes}}</h4>
+        </div>
+          
+  
+  <div>
+    {{post.title}}
+  </div>  
+  <div>
+    {{post.question}}
+  </div> 
+  <div>
+    {{post.description}}
+  </div>
+</div>
+
+
+<form class="form-horizontal" id="example-form">
+  <div class="form-group">
+    <label class="control-label" for="inputExample">Example</label>
+    <div class="controls">
+      <input type="text" id="inputExample" placeholder="Example">
+      <span data-alertid="example"></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="controls">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+ 
+<script>
+$(function(){
+  $("#example-form").submit(function() {
+    var inputVal = $("#inputExample").val();
+    $(document).trigger("clear-alert-id.example");
+    if (inputVal.length < 3) {
+      $(document).trigger("set-alert-id-example", [
+        {
+          message: "Please enter at least 3 characters",
+          priority: "error"
+        },
+        {
+          message: "This is an info alert",
+          priority: "info"
+        }
+      ]);
+    }
+  });
+});
+</script>

@@ -1,0 +1,83 @@
+<form class="form-horizontal" id="example-form">
+  <div class="form-group">
+    <label class="control-label" for="inputExample">Example</label>
+    <div class="controls">
+      <input type="text" id="inputExample" placeholder="Example">
+      <span data-alertid="example"></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="controls">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+ 
+<script>
+$(function(){
+  $("#example-form").submit(function() {
+    var inputVal = $("#inputExample").val();
+    $(document).trigger("clear-alert-id.example");
+    if (inputVal.length < 3) {
+      $(document).trigger("set-alert-id-example", [
+        {
+          message: "Please enter at least 3 characters",
+          priority: "error"
+        },
+        {
+          message: "This is an info alert",
+          priority: "info"
+        }
+      ]);
+    }
+  });
+});
+</script><html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<base href="/">
+
+	<title>Consultool</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+
+	<!-- JS -->
+	<script src="libs/jquery/dist/jquery.js"></script>
+  <script src="libs/angular/angular.min.js"></script>
+	<script src="libs/angular-route/angular-route.min.js"></script>
+  
+  <script src="js/button.js"></script>
+	<!-- ANGULAR CUSTOM -->
+	<script src="js/controllers/MainCtrl.js"></script>
+	<script src="js/controllers/SubmCtrl.js"></script>
+	<script src="js/services/SubmService.js"></script>
+	<script src="js/controllers/GeekCtrl.js"></script>
+	<script src="js/services/GeekService.js"></script>
+	<script src="js/appRoutes.js"></script>
+	<script src="js/app.js"></script>
+</head>
+<body ng-app="consultApp" ng-controller="MainController" class="ng-scope">
+<div class="container">
+	
+	<!-- HEADER -->
+	<nav class="navbar navbar-inverse">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Consultool Home</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li><a href="/subms" class="glyphicon glyphicon-comment"> Submissions</a></li>
+			<li><a href="/geeks" class="glyphicon glyphicon-search"> Search</a></li>
+		</ul>
+	</nav>
+
+	<!-- ANGULAR DYNAMIC CONTENT -->
+	<div ng-view class="ng-scope"></div>
+
+</div>
+  
+
+</body>
+</html>
+l

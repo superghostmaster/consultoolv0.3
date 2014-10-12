@@ -1,0 +1,30 @@
+
+	- app
+	----- routes.js
+	- config
+        ----- db.js 
+	- node_modules <!-- created by npm install -->
+  
+	- public <!-- all frontend and angular stuff -->
+	----- css
+	----- js
+	---------- controllers <!-- angular controllers -->
+	---------- services <!-- angular services -->
+	---------- app.js <!-- angular application -->
+	---------- appRoutes.js <!-- angular routes -->
+	----- img
+	----- libs <!-- created by bower install -->
+	----- views 
+	---------- home.html
+	---------- nerd.html
+	---------- geek.html
+	----- index.html
+	
+  - .bowerrc <!-- tells bower where to put files (public/libs) -->
+	- bower.json <!-- tells bower which files we need -->
+      -- used for defining libs to pull: angular/-route, bootstrap, jquery & dependent fonts
+	- package.json <!-- tells npm which packages we need -->
+      -- used for pulling nodejs dependent modules (npm install after pull)
+	- server.js <!-- set up our node application --
+      -- node server.js to start on port 8080
+  
