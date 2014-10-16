@@ -1,7 +1,7 @@
  // app/routes.js
 
 // grab the nerd model
-var Nerd = require('./models/nerd');
+var Consapp = require('./models/Posts');
 
 	module.exports = function(app) {
 

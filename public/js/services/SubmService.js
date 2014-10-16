@@ -1,4 +1,4 @@
-// public/js/services/NerdService.js
+// public/js/services/SubmService.js
 angular.module('SubmService', []).factory('Subm', ['$http', function($http) {
 
 	return {

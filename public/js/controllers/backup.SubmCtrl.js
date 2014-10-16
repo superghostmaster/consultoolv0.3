@@ -16,10 +16,15 @@ angular.module('SubmCtrl', [])
   }
 ])
 .controller('SubmController', function($scope,posts) {
-
-	$scope.posts = posts.posts;
+  
+  $scope.posts = posts.posts;
   
   $scope.addPost = function(){
+  if($scope.title === '') { 
+    alert("You must enter a title!");
+    return;
+  }
+    
   $scope.posts.push({
     title: $scope.title,
     question: $scope.question,
@@ -30,7 +35,7 @@ angular.module('SubmCtrl', [])
   $scope.question = '';
   $scope.description = '';
   $scope.votes = 0;
-  }
+}
   
   $scope.incrementUpvotes = function(post){
     post.votes += 1;
@@ -40,3 +45,15 @@ angular.module('SubmCtrl', [])
   }
   
 })
+.controller('mainController', function($scope) {
+
+		// function to submit the form after all validation has occurred			
+		$scope.submitForm = function(isValid) {
+
+			// check to make sure the form is completely valid
+			if (isValid) {
+				alert('our form is amazing');
+			}
+
+		};
+});
